@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal took_damage
+
 @export var _speed: float = 120
 @export var _rocker_container: Node
 
@@ -23,3 +25,9 @@ func _shoot() -> void:
 	
 	rocket_instance.global_position = global_position
 	rocket_instance.global_position.x += 80
+
+func take_damage() -> void:
+	took_damage.emit()
+	
+func die() -> void:
+	queue_free()

@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://7kq7kon2d7cg"]
+
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_wfxw0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbu03"]
+bg_color = Color(0.701961, 0, 0, 0.509804)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_3nlhu"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_d03c8"]
+font_size = 48
+font_color = Color(0, 0.733333, 1, 1)
+
+[node name="GameOverScreen" type="Control" node_paths=PackedStringArray("_score")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wfxw0")
+_score = NodePath("Panel/Score")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -186.0
+offset_right = 384.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lbu03")
+
+[node name="GameOver" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.5
+offset_top = -166.0
+offset_right = 183.5
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_3nlhu")
+
+[node name="Score" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.5
+offset_top = -66.0
+offset_right = 155.5
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SCORE: 9999"
+label_settings = SubResource("LabelSettings_d03c8")
+
+[node name="RetryButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = 64.0
+offset_right = 121.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 44
+text = "RETRY"
+
+[connection signal="pressed" from="Panel/RetryButton" to="." method="_on_retry_button_pressed"]
