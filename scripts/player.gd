@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var _speed: float = 300
+@export var _speed: float = 120
 @export var _rocker_container: Node
 
 var _rocket_scene = preload("res://scenes/rocket.tscn")

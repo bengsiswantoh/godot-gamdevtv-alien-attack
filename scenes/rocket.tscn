@@ -8,6 +8,8 @@ radius = 15.0
 height = 75.0
 
 [node name="Rocket" type="Area2D" node_paths=PackedStringArray("_visible_notifier")]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_m28dr")
 _speed = 500.0
 _visible_notifier = NodePath("VisibleOnScreenNotifier2D")
@@ -22,3 +24,5 @@ shape = SubResource("CapsuleShape2D_qcsmn")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-25, 0)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
