@@ -3,7 +3,8 @@ extends CharacterBody2D
 signal took_damage
 
 @export var _speed: float = 120
-@export var _rocker_container: Node
+@export var _rocket_container: Node
+@export var _rocket_shoot_sound: AudioStreamPlayer
 
 var _rocket_scene = preload("res://scenes/rocket.tscn")
 
@@ -21,10 +22,12 @@ func _physics_process(_delta: float) -> void:
 
 func _shoot() -> void:
 	var rocket_instance = _rocket_scene.instantiate()
-	_rocker_container.add_child(rocket_instance)
+	_rocket_container.add_child(rocket_instance)
 	
 	rocket_instance.global_position = global_position
 	rocket_instance.global_position.x += 80
+	
+	_rocket_shoot_sound.play()
 
 func take_damage() -> void:
 	took_damage.emit()

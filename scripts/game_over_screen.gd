@@ -6,5 +6,4 @@ func _on_retry_button_pressed() -> void:
 	get_tree().reload_current_scene()
 
 func set_score_label(new_score: int) -> void:
-	print("a")
-	#_score.text = 'SCORE: ' + str(new_score)
+	_score.text = 'SCORE: ' + str(new_score)
